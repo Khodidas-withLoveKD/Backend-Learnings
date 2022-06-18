@@ -1,8 +1,22 @@
 package com.example.postgresdemo.student;
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity
+@Table
 public class StudentEntity {
+
+  @Id
+  @SequenceGenerator(
+          name = "student_sequence",
+          sequenceName = "student_sequence",
+          allocationSize = 1
+  )
+  @GeneratedValue (
+          strategy = GenerationType.SEQUENCE,
+          generator = "student_sequence"
+  )
   private Long id;
   private String name;
   private String email;
