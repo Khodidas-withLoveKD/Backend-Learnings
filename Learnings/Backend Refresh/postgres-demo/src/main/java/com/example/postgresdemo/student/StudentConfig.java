@@ -15,13 +15,13 @@ public class StudentConfig {
   @Bean
   CommandLineRunner commandLineRunner (StudentRepository repository) {
     return args -> {
-      StudentEntity mariam = new StudentEntity(
+      Student mariam = new Student(
             1L,
             "Mariam",
             "mari.afd@gmail.com",
             LocalDate.of(1998, Month.JANUARY, 12)
       );
-      StudentEntity alex = new StudentEntity(
+      Student alex = new Student(
             1L,
             "Alex",
             "alex.d@gmail.com",

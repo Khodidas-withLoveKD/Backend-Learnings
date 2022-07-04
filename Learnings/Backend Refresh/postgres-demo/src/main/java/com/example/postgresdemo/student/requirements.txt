@@ -1,6 +1,0 @@
-Student has:
-1. First name
-2. Last Name
-3. DOB
-4. age (calculated)
-5. email
