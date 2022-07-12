@@ -1,0 +1,18 @@
+Employee Management Syste
+
+Emp should have:
+ - First Name
+ - Last Name
+ - Age
+ - DoB
+ - isAdmin
+ - (Obviously an) Id
+ - Email
+
+Conditons
+ - Cannot have more than one admin
+
+1. Create Emp
+2. Modify their details - fN, lN, Email
+3. Read - All Emp, Emp by Id, Emp by mail
+4. Delete Emp
