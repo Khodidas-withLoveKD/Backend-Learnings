@@ -8,7 +8,7 @@ import java.time.LocalDate;
 @Table(name = "Employees")
 @Entity
 @Data
-public class emsEntity {
+public class Employee {
   @Id
   @SequenceGenerator(
           name = "employee_sequence",
