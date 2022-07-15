@@ -5,8 +5,6 @@ import com.example.employeeManagementSystem.ems.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class EmployeeServicesImpl implements EmployeeServices {
 
@@ -19,6 +17,14 @@ public class EmployeeServicesImpl implements EmployeeServices {
     return employeeRepository.getEmployeeByEmail(email)
             .orElseThrow(() -> new IllegalStateException(
                     "Employee with email: " + email + " does not exists :("
+            ));
+  }
+
+  @Override
+  public Employee getEmployeeById (Long empId) {
+    return employeeRepository.findById(empId)
+            .orElseThrow(() -> new IllegalStateException(
+                    "Employee with Id: " + empId + " does not exists :("
             ));
   }
 }
