@@ -7,4 +7,6 @@ public interface EmployeeServices {
   Employee getEmployeeByEmail(String email);
 
   Employee getEmployeeById (Long empId);
+
+  void createEmployee (Employee employee);
 }
