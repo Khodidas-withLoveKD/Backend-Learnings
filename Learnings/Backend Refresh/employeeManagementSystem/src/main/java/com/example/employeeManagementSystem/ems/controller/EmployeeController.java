@@ -17,12 +17,12 @@ public class EmployeeController {
     return employeeServices.getEmployeeByEmail(email);
   }
 
-  @GetMapping(value = "getEmployee/:id")
+  @GetMapping(value = "getEmployeeById/{id}")
   Employee getEmployeeById(@PathVariable Long id) {
     return employeeServices.getEmployeeById(id);
   }
 
-  @PostMapping
+  @PostMapping (value = "createEmployee")
   void createEmployee(@RequestBody Employee employee) {
     employeeServices.createEmployee(employee);
   }

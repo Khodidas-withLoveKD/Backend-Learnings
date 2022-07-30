@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.Period;
 
 @Table(name = "Employees")
 @Entity
@@ -23,7 +24,12 @@ public class Employee {
   String firstName;
   String lastName;
   LocalDate dateOfBirth;
+  @Transient
   Integer age;
   Boolean isAdmin;
   String email;
+
+  public Integer getAge() {
+    return Period.between(this.dateOfBirth, LocalDate.now()).getYears();
+  }
 }
