@@ -9,4 +9,6 @@ public interface EmployeeServices {
   Employee getEmployeeById (Long empId);
 
   void createEmployee (Employee employee);
+
+  void deleteEmployeeByEmail (String email);
 }

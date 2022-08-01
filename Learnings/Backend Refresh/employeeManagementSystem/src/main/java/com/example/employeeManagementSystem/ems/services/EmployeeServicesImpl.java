@@ -5,6 +5,7 @@ import com.example.employeeManagementSystem.ems.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
@@ -16,7 +17,7 @@ public class EmployeeServicesImpl implements EmployeeServices {
   @Override
   public Employee getEmployeeByEmail(String email) {
 
-    return employeeRepository.findEmployeeByEmail(email)
+    return employeeRepository.getEmployeeByEmail(email)
             .orElseThrow(() -> new IllegalStateException(
                     "Employee with email: " + email + " does not exists :("
             ));
@@ -34,12 +35,25 @@ public class EmployeeServicesImpl implements EmployeeServices {
   public void createEmployee (Employee employee) {
 
     Optional<Employee> anotherEmployee =
-            employeeRepository.findEmployeeByEmail(employee.getEmail());
+            employeeRepository.getEmployeeByEmail(employee.getEmail());
     if (anotherEmployee.isPresent()) {
       throw new IllegalStateException(
               "Employee with this email (" + employee.getEmail() + ") already exists :("
       );
     }
     employeeRepository.save(employee);
+  }
+
+  @Override
+  public void deleteEmployeeByEmail(String email) {
+    // check if emp with email exists
+    Optional<Employee> employee = employeeRepository.getEmployeeByEmail(email);
+    if (!employee.isPresent()) {
+      throw new IllegalStateException(
+              "Employee with email " + email + " does not exists"
+      );
+    }
+
+    employeeRepository.deleteEmployeeByEmail(email);
   }
 }

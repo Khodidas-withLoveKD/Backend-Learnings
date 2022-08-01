@@ -26,6 +26,11 @@ public class EmployeeController {
   void createEmployee(@RequestBody Employee employee) {
     employeeServices.createEmployee(employee);
   }
+
+  @DeleteMapping(value = "deleteEmployee")
+  void deleteEmployeeByEmail(@RequestParam String email) {
+    employeeServices.deleteEmployeeByEmail(email);
+  }
 }
 
 /*
