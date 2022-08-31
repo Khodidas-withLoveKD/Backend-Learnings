@@ -9,5 +9,5 @@ public interface EmployeeServices {
     Employee findById(int id);
     void deleteById(int id);
     List<Employee> findAll();
-    public List<Employee> findByFirstName (String firstName);
+    List<Employee> findByFirstName(String firstName);
 }
