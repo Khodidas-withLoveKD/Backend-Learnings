@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="542fab94-4296-48fa-a84b-c728e370a756" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/springmongorefresh/repository/StudentRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/7.5/fileHashes/fileHashes.bin" afterDir="false" />
@@ -17,7 +16,8 @@
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springmongorefresh/SpringMongoRefreshApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springmongorefresh/SpringMongoRefreshApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springmongorefresh/entity/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springmongorefresh/entity/Student.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springmongorefresh/entity/models/Address.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springmongorefresh/entity/models/Address.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/springmongorefresh/repository/StudentRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/springmongorefresh/repository/StudentRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Projects/Bookbuzz" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Projects/Bookbuzz" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

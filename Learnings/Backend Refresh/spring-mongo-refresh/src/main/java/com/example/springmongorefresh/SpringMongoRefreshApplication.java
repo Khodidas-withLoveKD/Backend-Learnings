@@ -8,11 +8,15 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
 public class SpringMongoRefreshApplication {
@@ -22,7 +26,7 @@ public class SpringMongoRefreshApplication {
 	}
 
 	@Bean
-	CommandLineRunner runner (StudentRepository repository) {
+	CommandLineRunner runner (StudentRepository repository, MongoTemplate mongoTemplate) {
 		return args ->  {
 			Address address = new Address(
 							"Surat",
@@ -35,18 +39,44 @@ public class SpringMongoRefreshApplication {
 				add("Maths");
 			}};
 
+			String email = "chauhan.khodidas@gmail.com";
 			Student student = new Student(
 							"Khodidas",
 							"Chauhan",
-							"chauhan.khodidas@gmail.com",
+							email,
 							Gender.MALE,
 							address,
 							favSubjects,
 							BigDecimal.TEN,
 							LocalDateTime.now()
 			);
-			repository.save(student);
+
+//			findStudentUsingMongoTemplateAndQuery(repository, mongoTemplate, email, student);
+			Optional<Student> otherStudent = repository.findStudentByEmail(email);
+			System.out.println("otherStudent = " + otherStudent);
+			if (otherStudent.isPresent()) {
+				System.out.println("Student with email " + email + " already exists!!");
+			} else {
+				System.out.println("Creating Student: " + student);
+				repository.insert(student);
+			}
 		};
+	}
+
+	private void findStudentUsingMongoTemplateAndQuery(StudentRepository repository, MongoTemplate mongoTemplate, String email, Student student) {
+		Query query = new Query();
+		query.addCriteria(Criteria.where("email`").is(email));
+		List<Student> students = mongoTemplate.find(query, Student.class);
+
+		if (students.size() > 0) {
+			System.out.println("Student with email " + email + " already exists!!");
+			throw new IllegalStateException(
+							"Student with email " + email + " already exists!!"
+			);
+		}
+
+		System.out.println("Creating Student: " + student);
+		repository.insert(student);
 	}
 
 }
