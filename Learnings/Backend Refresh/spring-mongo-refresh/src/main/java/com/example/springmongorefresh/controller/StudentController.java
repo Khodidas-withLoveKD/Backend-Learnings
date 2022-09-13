@@ -3,9 +3,7 @@ package com.example.springmongorefresh.controller;
 import com.example.springmongorefresh.entity.Student;
 import com.example.springmongorefresh.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -20,4 +18,16 @@ public class StudentController {
   List<Student> getAllStudents() {
     return studentService.getAllStudents();
   }
+
+  // Get student by email
+
+  // insert student
+  @PostMapping(value = "addStudent")
+  void registerStudent(@RequestBody Student student) {
+    studentService.addStudent(student);
+  }
+
+  // delete student
+
+  // update student by email
 }

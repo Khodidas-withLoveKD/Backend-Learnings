@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -16,5 +17,16 @@ public class StudentServiceImpl implements StudentService {
   @Override
   public List<Student> getAllStudents() {
     return studentRepository.findAll();
+  }
+
+  @Override
+  public void addStudent(Student student) {
+    Optional<Student> anotherStudent = studentRepository.findStudentByEmail(student.getEmail());
+    System.out.println("anotherStudent = " + anotherStudent);
+    if(anotherStudent.isPresent()) {
+      throw new IllegalStateException(" Student with email " + student.getEmail() + " already exist!!");
+    }
+    
+    studentRepository.save(student);
   }
 }
