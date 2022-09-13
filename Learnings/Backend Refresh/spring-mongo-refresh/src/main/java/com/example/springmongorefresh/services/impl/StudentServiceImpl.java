@@ -22,11 +22,20 @@ public class StudentServiceImpl implements StudentService {
   @Override
   public void addStudent(Student student) {
     Optional<Student> anotherStudent = studentRepository.findStudentByEmail(student.getEmail());
-    System.out.println("anotherStudent = " + anotherStudent);
     if(anotherStudent.isPresent()) {
       throw new IllegalStateException(" Student with email " + student.getEmail() + " already exist!!");
     }
     
     studentRepository.save(student);
+  }
+
+  @Override
+  public void deleteStudentByEmail(String email) {
+    Optional<Student> anotherStudent = studentRepository.findStudentByEmail(email);
+    if(!anotherStudent.isPresent()) {
+      throw new IllegalStateException("Unable to delete student. Student with email " + email + " does not exist!!");
+    }
+
+    studentRepository.deleteStudentByEmail(email);
   }
 }

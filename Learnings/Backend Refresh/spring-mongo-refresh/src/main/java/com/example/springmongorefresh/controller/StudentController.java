@@ -28,6 +28,10 @@ public class StudentController {
   }
 
   // delete student
+  @DeleteMapping(value = "deleteStudent")
+  void deleteStudentByEmail(@RequestParam String studentEmail) {
+    studentService.deleteStudentByEmail(studentEmail);
+  }
 
   // update student by email
 }
