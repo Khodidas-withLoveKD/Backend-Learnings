@@ -1,6 +1,7 @@
 package com.example.springmongorefresh.controller;
 
 import com.example.springmongorefresh.entity.Student;
+import com.example.springmongorefresh.entity.models.Address;
 import com.example.springmongorefresh.services.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -33,5 +34,9 @@ public class StudentController {
     studentService.deleteStudentByEmail(studentEmail);
   }
 
-  // update student by email
+  // update student Name and address by email
+  @PutMapping(value = "updateStudentNameAndAddress")
+  void updateStudentNameAndAddress(@RequestParam(value = "email")String studentEmail, @RequestParam(value = "firstName") String studentFirstName, @RequestParam(value = "lastName") String studentLastName, @RequestBody Address studentAddress) {
+    studentService.updateStudentNameAndAddress(studentEmail, studentFirstName, studentLastName, studentAddress);
+  }
 }
