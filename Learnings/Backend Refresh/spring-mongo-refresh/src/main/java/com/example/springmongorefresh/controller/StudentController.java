@@ -20,21 +20,16 @@ public class StudentController {
     return studentService.getAllStudents();
   }
 
-  // Get student by email
-
-  // insert student
   @PostMapping(value = "addStudent")
   void registerStudent(@RequestBody Student student) {
     studentService.addStudent(student);
   }
 
-  // delete student
   @DeleteMapping(value = "deleteStudent")
   void deleteStudentByEmail(@RequestParam String studentEmail) {
     studentService.deleteStudentByEmail(studentEmail);
   }
 
-  // update student Name and address by email
   @PutMapping(value = "updateStudentNameAndAddress")
   void updateStudentNameAndAddress(@RequestParam(value = "email")String studentEmail, @RequestParam(value = "firstName") String studentFirstName, @RequestParam(value = "lastName") String studentLastName, @RequestBody Address studentAddress) {
     studentService.updateStudentNameAndAddress(studentEmail, studentFirstName, studentLastName, studentAddress);

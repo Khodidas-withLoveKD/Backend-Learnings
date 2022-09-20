@@ -9,12 +9,10 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
-import org.springframework.data.mongodb.core.query.UpdateDefinition;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -49,22 +47,6 @@ public class StudentServiceImpl implements StudentService {
   }
 
   @Override
-//  @Transactional
-  public void updateStudent(Student student) {
-    Optional<Student> anotherStudent = studentRepository.findStudentByEmail(student.getEmail());
-    if (!anotherStudent.isPresent()) {
-      throw new IllegalStateException(
-              "Student with email " + student.getEmail() + " does not exist"
-      );
-    }
-
-    Query query = new Query();
-    query.addCriteria(Criteria.where("email").is(student.getEmail()));
-
-//    mongoTemplate.updateFirst(query, student);
-  }
-
-  @Override
   public void updateStudentNameAndAddress(String email, String firstName, String lastName, Address address) {
     Optional<Student> anotherStudent = studentRepository.findStudentByEmail(email);
     if (!anotherStudent.isPresent()) {
@@ -76,7 +58,6 @@ public class StudentServiceImpl implements StudentService {
     Query query = new Query();
     query.addCriteria(Criteria.where("email").is(email));
 
-//    ion = new Upd
     Update update = new Update();
     update.set("firstName", firstName);
     update.set("lastName", lastName);
